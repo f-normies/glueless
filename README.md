@@ -12,18 +12,17 @@ A lightweight Docker container that routes traffic through VLESS Xray-XTLS proto
 
 ## Quick Start
 
-1. **Configure your VLESS and Hiddify configurations** (learn more on hiddyfi-core [repository]() and [website]())
+1. **Configure your VLESS and Hiddify configurations** (learn more on hiddify-core [repository](https://github.com/hiddify/hiddify-core) and [website](https://hiddify.com/app/HiddifyCli-guide/))
 
 2. **Start the container**:
    ```bash
-   cd hiddify-core
-   docker-compose up -d
+   sudo docker compose up -d
    ```
 
 3. **Test the connection**:
    ```bash
    # Run the test suite
-   docker-compose -f ../docker-compose.test.yml --profile test up test-client
+   sudo docker compose -f docker-compose.test.yml --profile test up test-client
    ```
 
 ## Configuration
@@ -58,7 +57,7 @@ Edit `hiddify-core/proxy-config.json` with your VLESS server details. Barebones 
 
 ### Client Configuration
 
-Edit `hiddify-core/hiddify-config.json` to adjust client settings like DNS, routing rules, and ports.
+Edit `hiddify-core/hiddify-config.json` to adjust client settings like DNS and routing rules. **Changing ports is highly not recommended**.
 
 ## Usage with Other Containers
 
