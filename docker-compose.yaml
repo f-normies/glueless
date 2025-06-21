@@ -1,0 +1,18 @@
+services:
+  glueless:
+    container_name: glueless
+    build:
+      context: ./hiddify-core
+      dockerfile: Dockerfile
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ./hiddify-core/hiddify-config.json:/hiddify/hiddify-config.json
+      - ./hiddify-core/proxy-config.json:/hiddify/proxy-config.json
+      - ./logs:/hiddify/logs
+    ports:
+      - "12334:12334"  # Mixed proxy port
+      - "12335:12335"  # TProxy port
+      - "16756:16756"  # Clash API port
+      - "16450:16450"  # DNS port
+    restart: unless-stopped
