@@ -50,8 +50,8 @@ setup_log_pipes() {
 
 get_server_ip() {
     if [ -f "/hiddify/proxy-config.json" ]; then
-        # Extract server IP from outbounds section, skip DNS servers
-        sed -n '/"outbounds"/,/]/p' /hiddify/proxy-config.json | grep -o '"server": "[^"]*"' | head -1 | cut -d'"' -f4
+        # Extract server IP from VLESS outbound configuration
+        grep -A 20 -B 1 '"type": "vless"' /hiddify/proxy-config.json | grep '"server"' | head -1 | cut -d'"' -f4
     else
         echo ""
     fi
