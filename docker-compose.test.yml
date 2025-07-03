@@ -5,8 +5,8 @@ services:
     cap_add:
       - NET_ADMIN
     volumes:
-      - ./hiddify-core/hiddify-config.json:/hiddify/hiddify-config.json
-      - ./hiddify-core/proxy-config.json:/hiddify/proxy-config.json
+      - ./hiddify-config.json:/hiddify/hiddify-config.json
+      - ./proxy-config.json:/hiddify/proxy-config.json
       - ./logs:/hiddify/logs
     # For accessing services you can forward your ports:
     # ports:
