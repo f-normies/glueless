@@ -57,7 +57,7 @@ Edit `proxy-config.json` with your VLESS server details. Barebones example:
 
 ### Client Configuration
 
-Edit `hiddify-config.json` to adjust client settings like DNS and routing rules. **Changing ports is highly not recommended**.
+Edit `hiddify-config.json` to adjust client settings like DNS and routing rules. **TUN mode (`"enable-tun"` and `"enable-tun-service"`) SHOULD BE SET TO FALSE.**  Changing ports is highly not recommended.
 
 ## Usage with Other Containers
 
