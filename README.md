@@ -29,7 +29,7 @@ A lightweight Docker container that routes traffic through VLESS Xray-XTLS proto
 
 ### VLESS Server Configuration
 
-Edit `hiddify-core/proxy-config.json` with your VLESS server details. Barebones example:
+Edit `proxy-config.json` with your VLESS server details. Barebones example:
 
 ```json
 {
@@ -57,7 +57,7 @@ Edit `hiddify-core/proxy-config.json` with your VLESS server details. Barebones 
 
 ### Client Configuration
 
-Edit `hiddify-core/hiddify-config.json` to adjust client settings like DNS and routing rules. **Changing ports is highly not recommended**.
+Edit `hiddify-config.json` to adjust client settings like DNS and routing rules. **Changing ports is highly not recommended**.
 
 ## Usage with Other Containers
 
