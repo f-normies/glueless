@@ -68,12 +68,12 @@ ALL of the traffic from containers using this network mode will automatically go
 ```yaml
 services:
   glueless:
-    build: ./hiddify-core
+    image: ghcr.io/f-normies/glueless:latest
     cap_add:
       - NET_ADMIN
     volumes:
-      - ./hiddify-core/hiddify-config.json:/hiddify/hiddify-config.json
-      - ./hiddify-core/proxy-config.json:/hiddify/proxy-config.json
+      - ./hiddify-config.json:/hiddify/hiddify-config.json
+      - ./proxy-config.json:/hiddify/proxy-config.json
 
   your-app:
     image: your-app:latest
@@ -91,7 +91,12 @@ Traffic from apps that support proxies env variables will be routed through VPN,
 ```yaml
 services:
   glueless:
-    # ... same as above
+    image: ghcr.io/f-normies/glueless:latest
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ./hiddify-config.json:/hiddify/hiddify-config.json
+      - ./proxy-config.json:/hiddify/proxy-config.json
     ports:
       - "12334:12334"
 

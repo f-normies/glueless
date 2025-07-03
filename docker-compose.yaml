@@ -1,9 +1,7 @@
 services:
   glueless:
     container_name: glueless
-    build:
-      context: ./hiddify-core
-      dockerfile: Dockerfile
+    image: ghcr.io/f-normies/glueless:latest
     cap_add:
       - NET_ADMIN
     volumes:
