@@ -50,8 +50,19 @@ setup_log_pipes() {
 
 get_server_ip() {
     if [ -f "/hiddify/proxy-config.json" ]; then
-        # Extract server IP from VLESS outbound configuration
-        grep -A 20 -B 1 '"type": "vless"' /hiddify/proxy-config.json | grep '"server"' | head -1 | cut -d'"' -f4
+        # Extract server address from VLESS outbound configuration
+        local server_addr=$(grep -A 20 -B 1 '"type": "vless"' /hiddify/proxy-config.json | grep '"server"' | head -1 | cut -d'"' -f4)
+
+        # Check if it's an IP address or domain
+        if echo "$server_addr" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$'; then
+            # It's already an IP address
+            echo "$server_addr"
+        elif [ -n "$server_addr" ]; then
+            # It's a domain, resolve it to IP
+            getent hosts "$server_addr" | awk '{ print $1 ; exit }'
+        else
+            echo ""
+        fi
     else
         echo ""
     fi
